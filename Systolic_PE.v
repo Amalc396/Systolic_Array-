@@ -10,10 +10,10 @@ module systolic_pe (
     output cout                   // Carry out from CSA
 );
 
-    // Internal wires
-    wire [15:0] mult_result;      // 16-bit result from Wallace Tree Multiplier
+   
+    wire [15:0] mult_result;      
 
-    // Instantiate Wallace Tree Multiplier (8-bit) with internal registers
+    
     wallaceTreeMultiplier8Bit wtm (
         .clk(clk),
         .rst_n(rst_n),
@@ -22,15 +22,15 @@ module systolic_pe (
         .result(mult_result)
     );
 
-    // Instantiate Carry Save Adder (16-bit) with internal registers
+    
     carry_save_adder_16bit csa (
         .clk(clk),
         .rst_n(rst_n),
-        .A(mult_result),          // Multiplier output
-        .B(sum_in),               // Direct sum_in (from previous PE)
-        .C(16'b0),                // No third input (set to 0)
-        .a_pass(a_in),            // Pass-through for a_in
-        .b_pass(b_in),            // Pass-through for b_in
+        .A(mult_result),          
+        .B(sum_in),               
+        .C(16'b0),                
+        .a_pass(a_in),            
+        .b_pass(b_in),            
         .SUM(sum_out),
         .COUT(cout),
         .a_out(a_out),
@@ -46,11 +46,11 @@ module wallaceTreeMultiplier8Bit (
     input [7:0] b,
     output [15:0] result
 );
-    // Internal registers for pipelining inputs
+    
     reg [7:0] a_reg;
     reg [7:0] b_reg;
 
-    // Pipeline inputs
+    
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             a_reg <= 8'b0;
@@ -62,7 +62,7 @@ module wallaceTreeMultiplier8Bit (
         end
     end
 
-    // Wallace Tree Multiplier logic (unchanged)
+    
     reg [7:0] wallaceTree[7:0];
     integer i, j;
 
@@ -174,13 +174,13 @@ module carry_save_adder_16bit (
     output [7:0] a_out,           // Pass-through output for a_in
     output [7:0] b_out            // Pass-through output for b_in
 );
-    // Internal wires for CSA computation
+   
     wire [15:0] carry;
     wire [15:0] sum;
     wire [16:0] ripple_sum;
     wire cout_wire;
 
-    // CSA logic (unchanged)
+    
     genvar i;
     generate
         for (i = 0; i < 16; i = i + 1) begin : csa_stage
@@ -216,13 +216,13 @@ module carry_save_adder_16bit (
         .cout(cout_wire)
     );
 
-    // Output registers
+    
     reg [16:0] sum_out_reg;
     reg cout_reg;
     reg [7:0] a_out_reg;
     reg [7:0] b_out_reg;
 
-    // Pipeline outputs
+    
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             sum_out_reg <= 17'b0;
@@ -238,7 +238,7 @@ module carry_save_adder_16bit (
         end
     end
 
-    // Assign outputs
+    
     assign SUM = sum_out_reg;
     assign COUT = cout_reg;
     assign a_out = a_out_reg;
@@ -246,7 +246,7 @@ module carry_save_adder_16bit (
 
 endmodule
 
-// Supporting modules (unchanged)
+
 primitive carryOut (output Cout, input A, input B, input Cin);
     table
         1 1 ? : 1;
