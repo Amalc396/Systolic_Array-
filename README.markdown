@@ -1,7 +1,8 @@
 # Abstract
 
 ## Overview
-This repository contains a Verilog implementation of a 4x4 systolic array multiplier designed for efficient multiplication of 8-bit numbers. The design utilizes a systolic processing element (PE) architecture, Wallace Tree multipliers, and carry-save adders to perform parallel computations.
+This repository contains a Verilog implementation of a 4x4 systolic array multiplier designed for efficient multiplication of 8-bit numbers. The design utilizes a systolic processing element (PE) architecture, Wallace Tree multipliers, and carry-save adders to perform parallel computations. 
+A systolic array is a network of processing elements (PEs) arranged in a grid, where each PE performs computations in a pipelined manner, passing data to neighboring PEs in a rhythmic, clock-driven flow, optimizing parallel processing.
 
 ## Features
 - **Systolic Array**: A 4x4 grid of processing elements (PEs) for parallel multiplication.
