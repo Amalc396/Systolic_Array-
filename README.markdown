@@ -15,7 +15,6 @@ This repository contains a Verilog implementation of a 4x4 systolic array multip
 - `carry_save_adder_16bit.v`: Carry-save adder module for 16-bit operations.
 - `systolic_array_4x4.v`: Top-level module for the 4x4 systolic array.
 - `top.v`: Main module integrating the systolic array.
-- `README.md`: This file.
 
 ## Usage
 1. **Simulation**: Use a Verilog simulator (e.g., ModelSim, Vivado) to compile and simulate the design.
@@ -27,9 +26,6 @@ This repository contains a Verilog implementation of a 4x4 systolic array multip
 
 ## Dependencies
 - Verilog 2001 compliant simulator.
-
-## License
-[Add your license here, e.g., MIT License]
 
 ## Contributing
 Feel free to fork this repository and submit pull requests for improvements.
