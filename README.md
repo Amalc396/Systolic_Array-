@@ -27,6 +27,3 @@ A systolic array is a network of processing elements (PEs) arranged in a grid, w
 
 ## Dependencies
 - Verilog 2001 compliant simulator.
-
-## Contributing
-Feel free to fork this repository and submit pull requests for improvements.
